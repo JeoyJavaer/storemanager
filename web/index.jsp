@@ -1,16 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: admin
-  Date: 2017/3/22
-  Time: 20:00
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title>首页</title>
-  </head>
-  <body>
-  首页主题部分
-  </body>
-</html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+	<jsp:forward page="login.jsp"></jsp:forward>
+</BODY>
+</HTML>
+
