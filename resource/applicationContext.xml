@@ -12,7 +12,7 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<!-- 引入外部属性文件 -->
-	<context:property-placeholder location="classpath:db.properties" />
+	<context:property-placeholder location="classpath:resource/applicationContext.xml" />
 
 	<!-- 连接池 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -39,7 +39,7 @@
 		<!-- 第三部分： 引入hbm -->
 		<property name="mappingResources">
 			<list>
-				<value>cn/itcast/domain/Book.hbm.xml</value>
+				<value>resource/Userinfo.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -51,6 +51,7 @@
 			<tx:method name="update*" read-only="false"/>
 			<tx:method name="delete*" read-only="false"/>
 			<tx:method name="find*" read-only="true"/>
+			<tx:method name="login"read-only="true"/>
 		</tx:attributes>
 	</tx:advice>
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
@@ -62,5 +63,20 @@
 		<aop:pointcut expression="bean(*Service)" id="txPointcut"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
 	</aop:config>
-	
+
+
+	<!--DAO-->
+	<bean id="userDAO" class="dao.GenericDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<!--Service-->
+	<bean id="userService" class="service.UserServiceImpl">
+		<property name="userDAO" ref="userDAO"/>
+	</bean>
+
+	<!--action-->
+	<bean id="userAction" class="web.action.UserAction">
+		<property name="userService" ref="userService"/>
+	</bean>
 </beans>

@@ -16,7 +16,12 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
-  
+  		<action name="user_*" class="userAction" method="{1}">
+			<result name="input">/login.jsp</result>
+			<result>/jsps/main.jsp</result>
+		</action>
     </package>
+
+
 
 </struts>
