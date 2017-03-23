@@ -20,6 +20,12 @@
 			<result name="input">/login.jsp</result>
 			<result>/jsps/main.jsp</result>
 		</action>
+
+		<action name="store_*"class="storeAction" method="{1}">
+			<result name="listAction" type="redirectAction">store_list</result>
+			<result name="listjsp">/jsps/store/store.jsp</result>
+			<result name="input">/jsps/store/add.jsp</result>
+		</action>
     </package>
 
 

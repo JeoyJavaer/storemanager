@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -23,7 +24,7 @@
 	<table border="0" width="100%" cellpadding="0" cellspacing="0">
 		<tr valign="top">
 			<td rowspan="2">
-				<form action="<c:url value='/jsps/store/store.jsp'/>" method="post" name="select">
+				<s:form action="store_save" namespace="/" method="post" name="select">
 					<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tx" align="center">
 						<colgroup>
 							<col width="20%" align="right">
@@ -39,7 +40,7 @@
 								仓库名称：
 							</td>
 							<td>
-								<input class="tx" type="text" name="name" value="主3号仓库">
+								<s:textfield cssClass="tx" name="name"/>
 							</td>
 						</tr>
 						<tr>
@@ -47,7 +48,7 @@
 								仓库地址：
 							</td>
 							<td>
-								<input class="tx" type="text" name="addr" value="吉林三省中转库">
+								<s:textfield cssClass="tx" name="addr"/>
 							</td>
 						</tr>
 						<tr>
@@ -55,7 +56,7 @@
 								库管员：
 							</td>
 							<td>
-								<input class="tx" type="text" name="manager" value="赵七">
+								<s:textfield cssClass="tx" name="manager"/>
 							</td>
 						</tr>
 						<tr>
@@ -65,7 +66,7 @@
 							</td>
 						</tr>
 					</table>
-				</form>
+				</s:form>
 			</td>
 			<td valign="top" width="20%">
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">

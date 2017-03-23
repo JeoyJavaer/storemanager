@@ -79,4 +79,16 @@
 	<bean id="userAction" class="web.action.UserAction">
 		<property name="userService" ref="userService"/>
 	</bean>
+
+	<bean id="storeDAO" class="dao.GenericDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<bean id="storeService" class="service.StoreServiceImpl" scope="prototype">
+		<property name="storeDAO" ref="storeDAO"/>
+	</bean>
+
+	<bean id="storeAction" class="web.action.StoreAction" scope="prototype">
+		<property name="storeService" ref="storeService"/>
+	</bean>
 </beans>
