@@ -26,4 +26,21 @@ public class StoreServiceImpl extends BaseService implements StoreService {
         List<Store> all = storeDAO.findAll(Store.class);
         return all;
     }
+
+    @Override
+    public void deleteStore(Store store) {
+        storeDAO.delete(store);
+    }
+
+    @Override
+    public Store findStoreById(String id) {
+        Store store = storeDAO.findById(Store.class, id);
+
+        return store;
+    }
+
+    @Override
+    public void updateStore(Store store) {
+        storeDAO.update(store);
+    }
 }

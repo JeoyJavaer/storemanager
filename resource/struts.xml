@@ -21,11 +21,15 @@
 			<result>/jsps/main.jsp</result>
 		</action>
 
-		<action name="store_*"class="storeAction" method="{1}">
+		<action name="store_*" class="storeAction" method="{1}">
 			<result name="listAction" type="redirectAction">store_list</result>
 			<result name="listjsp">/jsps/store/store.jsp</result>
-			<result name="input">/jsps/store/add.jsp</result>
+			<!--<result name="input">/jsps/store/add.jsp</result>-->
+			<result name="editjsp">/jsps/store/edit.jsp</result>
+			<result name="saveinput">/jsps/store/add.jsp</result>
 		</action>
+
+
     </package>
 
 

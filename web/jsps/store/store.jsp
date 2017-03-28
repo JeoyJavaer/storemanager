@@ -2,11 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery-1.8.3.js"></script>
 <html>
 <head>
     <title>仓库管理</title>
     <link rel="stylesheet" type="text/css"
-          href="<c:url value='/css/maple.css'/>"></link>
+          href="<c:url value='/css/maple.css'/>">listJsp</link>
     <style type="text/css">
         .tx td {
             padding: 3px;
@@ -29,6 +30,7 @@
         }
     </style>
 </head>
+
 <body>
 <table border="0" class="tx" width="100%">
     <tr>
@@ -62,6 +64,18 @@
                                         </td>
                                         <td>${store.addr}</td>
                                         <td>${store.manager}</td>
+                                        <td>
+                                           <s:a name="/" action="strore_delete" cssClass="delLink">
+                                               <s:param name="id" value="id"/>
+                                               删除
+                                           </s:a>
+                                        </td>
+
+                                        <td>
+                                            <s:a namespace="/" action="store_editvuew">
+                                                <s:param name="id" value="id"/>
+                                            </s:a>
+                                        </td>
                                     </tr>
                                 </s:iterator>
                             </table>
@@ -102,5 +116,19 @@
     </tr>
 </table>
 </body>
+
+<
+<script type="text/javascript">
+    $(function () {
+        $("a.delLink").click(function (event) {
+            var isConfirm=window.confirm("确认删除吗?");
+            if (!isConfirm) {
+                event.preventDefault();
+            }
+        });
+    })
+
+
+</script>
 </html>
 

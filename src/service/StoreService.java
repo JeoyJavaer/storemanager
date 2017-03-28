@@ -10,5 +10,7 @@ import java.util.List;
 public interface StoreService  {
     void saveStore(Store store);
     List<Store>findAllStores();
-
+    void  deleteStore(Store store);
+    Store findStoreById(String id);
+    public  void updateStore(Store store);
 }

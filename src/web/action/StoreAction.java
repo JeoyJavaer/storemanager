@@ -19,11 +19,11 @@ public class StoreAction extends BaseAction<Store> {
     public String save() {
         storeService.saveStore(model);
 
-        return "listjsp";
+        return "listJsp";
     }
 
     public String list() {
-//        List<Store> stores = storeService.findAllStores();
+        //List<Store> stores = storeService.findAllStores();
         //列表传递给JSP  放入栈，再取 两种方式
         /***********************方式一****************************/
         // ActionContext.getContext().getValueStack().push(stores);
@@ -33,8 +33,29 @@ public class StoreAction extends BaseAction<Store> {
         // ActionContext.getContext().put("atores",stores);
         /*****************************方式二*****************************/
 
-//        putToValueStactRoot("stores",stores);
+        //putToValueStactRoot("stores",stores);
         result=storeService.findAllStores();
-        return "listjsp";
+        return "listJsp";
     }
+
+    public  String delete(){
+        storeService.deleteStore(model);
+        return "listAction";
+    }
+
+    public String editview(){
+        Store store = storeService.findStoreById(model.getId());
+        putToValueStackRoot(store);
+        return "editjsp";
+    }
+
+    @InputConfig(resultName = "editinput")
+    public  String edit(){
+        storeService.updateStore(model);
+        return "listAction";
+    }
+
+
+
+
 }
